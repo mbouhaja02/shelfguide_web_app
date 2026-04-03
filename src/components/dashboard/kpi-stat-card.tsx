@@ -13,13 +13,14 @@ interface KPIStatCardProps {
 }
 
 const iconBgMap: Record<string, string> = {
-  'text-blue-600': 'bg-blue-50 text-blue-600',
+  'text-blue-600': 'bg-sky-50 text-sky-600',
+  'text-sky-600': 'bg-sky-50 text-sky-600',
   'text-red-500': 'bg-red-50 text-red-500',
   'text-amber-500': 'bg-amber-50 text-amber-600',
   'text-green-600': 'bg-emerald-50 text-emerald-600',
   'text-purple-500': 'bg-purple-50 text-purple-600',
   'text-emerald-600': 'bg-emerald-50 text-emerald-600',
-  'text-indigo-600': 'bg-indigo-50 text-indigo-600',
+  'text-cyan-600': 'bg-cyan-50 text-cyan-600',
 };
 
 export function KPIStatCard({
@@ -38,7 +39,7 @@ export function KPIStatCard({
 
   return (
     <div className={cn(
-      'group relative rounded-xl border border-border/60 bg-white p-5 transition-all duration-300 hover:shadow-md hover:shadow-black/[0.04] hover:border-border',
+      'group relative rounded-2xl border border-sky-100/60 bg-white p-5 transition-all duration-300 hover:shadow-lg hover:shadow-sky-200/20 hover:border-sky-200/60',
       className
     )}>
       <div className="flex items-start justify-between">

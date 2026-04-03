@@ -36,8 +36,8 @@ export default function LoginPage() {
     <div className="relative flex min-h-screen items-center justify-center overflow-hidden px-4">
       {/* Background gradient mesh */}
       <div className="absolute inset-0 bg-[#f8f9fb]" />
-      <div className="absolute top-0 -left-40 h-[500px] w-[500px] rounded-full bg-indigo-200/40 blur-[120px]" />
-      <div className="absolute bottom-0 -right-40 h-[500px] w-[500px] rounded-full bg-violet-200/40 blur-[120px]" />
+      <div className="absolute top-0 -left-40 h-[500px] w-[500px] rounded-full bg-sky-200/40 blur-[120px]" />
+      <div className="absolute bottom-0 -right-40 h-[500px] w-[500px] rounded-full bg-cyan-200/40 blur-[120px]" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-blue-100/30 blur-[100px]" />
 
       {/* Grid pattern */}
@@ -46,7 +46,7 @@ export default function LoginPage() {
       <div className="relative z-10 w-full max-w-[420px] animate-fade-in">
         {/* Logo */}
         <div className="mb-10 text-center">
-          <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl overflow-hidden shadow-xl shadow-indigo-500/20">
+          <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl overflow-hidden shadow-xl shadow-sky-500/20">
             <img src="/logo.jpeg" alt="ShelfGuide" className="h-full w-full object-cover" />
           </div>
           <h1 className="text-[28px] font-bold tracking-tight text-foreground">ShelfGuide</h1>
@@ -105,7 +105,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full h-10 rounded-lg bg-gradient-to-r from-indigo-500 to-violet-600 text-white text-sm font-medium shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center gap-2"
+              className="w-full h-10 rounded-lg bg-gradient-to-r from-sky-500 to-cyan-500 text-white text-sm font-medium shadow-lg shadow-sky-500/25 hover:shadow-sky-500/40 hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center gap-2"
             >
               {loading ? (
                 <div className="h-4 w-4 rounded-full border-2 border-white/30 border-t-white animate-spin" />
@@ -126,7 +126,7 @@ export default function LoginPage() {
             <button
               type="button"
               onClick={() => { setEmail('yassine.elamrani@marjane.ma'); }}
-              className="w-full flex items-center gap-3 rounded-lg px-3 py-2 text-left hover:bg-indigo-50/60 transition-colors group"
+              className="w-full flex items-center gap-3 rounded-lg px-3 py-2 text-left hover:bg-sky-50/60 transition-colors group"
             >
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 text-blue-600 text-[11px] font-bold group-hover:bg-blue-100 transition-colors">YE</div>
               <div>
@@ -137,9 +137,9 @@ export default function LoginPage() {
             <button
               type="button"
               onClick={() => { setEmail('salma.bennani@noordelice.ma'); }}
-              className="w-full flex items-center gap-3 rounded-lg px-3 py-2 text-left hover:bg-violet-50/60 transition-colors group"
+              className="w-full flex items-center gap-3 rounded-lg px-3 py-2 text-left hover:bg-sky-50/60 transition-colors group"
             >
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-violet-50 text-violet-600 text-[11px] font-bold group-hover:bg-violet-100 transition-colors">SB</div>
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-sky-50 text-sky-600 text-[11px] font-bold group-hover:bg-sky-100 transition-colors">SB</div>
               <div>
                 <p className="text-[13px] font-medium text-foreground">Salma Bennani · Brand Manager</p>
                 <p className="text-[11px] text-muted-foreground">Noor Délice · 12 magasins au Maroc</p>

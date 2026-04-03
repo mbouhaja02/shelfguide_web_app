@@ -98,7 +98,7 @@ export default function BrandInsightsPage() {
         <TrendCard
           title="Évolution de la disponibilité — 30 jours"
           data={availabilityTrend}
-          color="#6366f1"
+          color="#0ea5e9"
           unit="%"
         />
         <TrendCard
@@ -134,7 +134,7 @@ export default function BrandInsightsPage() {
               low: 'border-l-green-500',
             };
             return (
-              <div key={i} className={`rounded-xl border border-border/60 border-l-4 ${severityBorder[rec.severity]} bg-white p-4 hover:shadow-md hover:shadow-black/[0.04] transition-all`}>
+              <div key={i} className={`rounded-2xl border border-sky-100/60 border-l-4 ${severityBorder[rec.severity]} bg-white p-4 hover:shadow-md hover:shadow-black/[0.04] transition-all`}>
                 <div className="flex items-start gap-3">
                   <Lightbulb className={`h-5 w-5 mt-0.5 shrink-0 ${
                     rec.severity === 'high' ? 'text-red-500' : rec.severity === 'medium' ? 'text-amber-500' : 'text-green-500'
@@ -157,7 +157,7 @@ export default function BrandInsightsPage() {
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {underPerforming.map((store) => (
-            <div key={store.storeId} className="rounded-xl border border-border/60 bg-white p-5 hover:shadow-md hover:shadow-black/[0.04] transition-all">
+            <div key={store.storeId} className="rounded-2xl border border-sky-100/60 bg-white p-5 hover:shadow-md hover:shadow-black/[0.04] transition-all">
               <div className="flex items-center justify-between mb-3">
                 <div>
                   <h4 className="text-[14px] font-semibold">{store.storeName}</h4>
@@ -166,15 +166,15 @@ export default function BrandInsightsPage() {
                 <span className="text-2xl font-bold tabular-nums text-red-600">{store.globalScore}</span>
               </div>
               <div className="grid grid-cols-3 gap-2 text-center">
-                <div className="rounded-xl bg-slate-50/80 p-2">
+                <div className="rounded-xl bg-sky-50/50/80 p-2">
                   <p className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground/70">Anomalies</p>
                   <p className="font-bold text-[14px] tabular-nums">{store.anomalies}</p>
                 </div>
-                <div className="rounded-xl bg-slate-50/80 p-2">
+                <div className="rounded-xl bg-sky-50/50/80 p-2">
                   <p className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground/70">Ruptures</p>
                   <p className="font-bold text-[14px] tabular-nums text-red-600">{store.ruptures}</p>
                 </div>
-                <div className="rounded-xl bg-slate-50/80 p-2">
+                <div className="rounded-xl bg-sky-50/50/80 p-2">
                   <p className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground/70">Délai (h)</p>
                   <p className="font-bold text-[14px] tabular-nums">{store.avgCorrectionDelay}</p>
                 </div>

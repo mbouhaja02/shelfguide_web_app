@@ -53,14 +53,15 @@ export default function BrandManagerDashboard() {
 
   return (
     <div className="space-y-7 animate-fade-in">
-      {/* Header */}
-      <div className="flex items-end justify-between">
-        <div>
+      {/* Header with gradient accent */}
+      <div className="relative rounded-2xl bg-gradient-to-r from-sky-500 via-cyan-500 to-sky-400 p-6 text-white overflow-hidden">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMSIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA4KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNnKSIvPjwvc3ZnPg==')] opacity-40" />
+        <div className="relative">
           <div className="flex items-center gap-3 mb-1">
-            <h1 className="text-[24px] font-bold tracking-tight text-foreground">Pilotage {brand.brandName}</h1>
-            <span className="inline-flex items-center rounded-lg bg-indigo-50 px-2.5 py-1 text-[12px] font-semibold text-indigo-700">Brand Manager</span>
+            <h1 className="text-[26px] font-bold tracking-tight">Pilotage {brand.brandName}</h1>
+            <span className="inline-flex items-center rounded-lg bg-white/20 backdrop-blur-sm px-2.5 py-1 text-[12px] font-semibold text-white">Brand Manager</span>
           </div>
-          <p className="text-[14px] text-muted-foreground">
+          <p className="text-white/80 text-[14px] mt-1">
             Performance d&apos;exécution terrain — {format(new Date(), 'MMMM yyyy', { locale: fr })} · 12 magasins au Maroc
           </p>
         </div>
@@ -73,23 +74,23 @@ export default function BrandManagerDashboard() {
         <KPIStatCard label="Disponibilité" value={`${brand.availabilityRate}%`} change={2} trend="up" icon={TrendingUp} iconColor="text-emerald-600" />
         <KPIStatCard label="Taux de rupture" value={`${brand.ruptureRate}%`} change={-5} trend="down" icon={PackageX} iconColor="text-red-500" />
         <KPIStatCard label="Taux correction" value={`${brand.correctionRate}%`} change={8} trend="up" icon={CheckCircle2} iconColor="text-purple-500" />
-        <KPIStatCard label="Fill Rate" value={`${brand.fillRate}%`} change={4} trend="up" icon={BarChart3} iconColor="text-indigo-600" />
+        <KPIStatCard label="Fill Rate" value={`${brand.fillRate}%`} change={4} trend="up" icon={BarChart3} iconColor="text-cyan-600" />
       </div>
 
       {/* Weekly Execution Summary */}
-      <div className="rounded-xl border border-border/60 bg-white p-5">
+      <div className="rounded-2xl border border-sky-100/60 bg-white p-5">
         <div className="flex items-center gap-2 mb-4">
-          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-indigo-50">
-            <Activity className="h-3.5 w-3.5 text-indigo-600" />
+          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-sky-50">
+            <Activity className="h-3.5 w-3.5 text-sky-600" />
           </div>
           <h3 className="text-[14px] font-semibold text-foreground">Exécution terrain cette semaine</h3>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="rounded-lg bg-slate-50 p-3.5">
+          <div className="rounded-lg bg-sky-50/50 p-3.5">
             <p className="text-[11px] text-muted-foreground uppercase tracking-wider font-medium">Audits réalisés</p>
             <p className="text-[22px] font-bold text-foreground mt-1">{weekly.totalAudits}</p>
           </div>
-          <div className="rounded-lg bg-slate-50 p-3.5">
+          <div className="rounded-lg bg-sky-50/50 p-3.5">
             <p className="text-[11px] text-muted-foreground uppercase tracking-wider font-medium">Score moyen</p>
             <div className="flex items-baseline gap-2 mt-1">
               <p className="text-[22px] font-bold text-foreground">{weekly.avgScore}</p>
@@ -113,8 +114,8 @@ export default function BrandManagerDashboard() {
       </div>
 
       {/* Top Ruptured Products */}
-      <div className="rounded-xl border border-border/60 bg-white">
-        <div className="flex items-center gap-2 px-5 py-4 border-b border-border/40">
+      <div className="rounded-2xl border border-sky-100/60 bg-white">
+        <div className="flex items-center gap-2 px-5 py-4 border-b border-sky-50">
           <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-red-50">
             <Package className="h-3.5 w-3.5 text-red-500" />
           </div>
@@ -123,9 +124,9 @@ export default function BrandManagerDashboard() {
             <p className="text-[11px] text-muted-foreground">Impact sur le réseau de distribution</p>
           </div>
         </div>
-        <div className="divide-y divide-border/30">
+        <div className="divide-y divide-sky-50">
           {mockTopRupturedProducts.map((product, i) => (
-            <div key={i} className="flex items-center justify-between px-5 py-3 hover:bg-red-50/20 transition-colors">
+            <div key={i} className="flex items-center justify-between px-5 py-3 hover:bg-sky-50/30 transition-colors">
               <div className="flex items-center gap-3 flex-1 min-w-0">
                 <div className={`flex h-8 w-8 items-center justify-center rounded-lg shrink-0 text-[11px] font-bold ${
                   product.impact === 'critical' ? 'bg-red-100 text-red-700' : product.impact === 'high' ? 'bg-orange-100 text-orange-700' : 'bg-amber-100 text-amber-700'
@@ -141,7 +142,7 @@ export default function BrandManagerDashboard() {
                 <div className="text-right">
                   <p className="text-[12px] text-muted-foreground">{product.stores}/{product.totalStores} magasins</p>
                 </div>
-                <div className="w-20 h-2 bg-slate-100 rounded-full overflow-hidden">
+                <div className="w-20 h-2 bg-sky-50 rounded-full overflow-hidden">
                   <div className={`h-full rounded-full ${product.impact === 'critical' ? 'bg-red-500' : product.impact === 'high' ? 'bg-orange-500' : 'bg-amber-400'}`} style={{ width: `${(product.stores / product.totalStores) * 100}%` }} />
                 </div>
               </div>
@@ -161,7 +162,7 @@ export default function BrandManagerDashboard() {
         </div>
         <TabsContent value="7d">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-            <TrendCard title="Audits réalisés — 7 jours" data={mockAuditTrend7d} color="#6366f1" />
+            <TrendCard title="Audits réalisés — 7 jours" data={mockAuditTrend7d} color="#0ea5e9" />
             <BarChartCard title="Anomalies par catégorie" data={mockAnomaliesByCategory} color="#f59e0b" />
           </div>
         </TabsContent>
@@ -175,8 +176,8 @@ export default function BrandManagerDashboard() {
 
       {/* Risk & Top Stores */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-        <div className="rounded-xl border border-border/60 bg-white">
-          <div className="flex items-center gap-2 px-5 py-4 border-b border-border/40">
+        <div className="rounded-2xl border border-sky-100/60 bg-white">
+          <div className="flex items-center gap-2 px-5 py-4 border-b border-sky-50">
             <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-red-50">
               <AlertTriangle className="h-3.5 w-3.5 text-red-500" />
             </div>
@@ -185,9 +186,9 @@ export default function BrandManagerDashboard() {
               <p className="text-[11px] text-muted-foreground">Points de vente nécessitant un suivi renforcé</p>
             </div>
           </div>
-          <div className="divide-y divide-border/30">
+          <div className="divide-y divide-sky-50">
             {riskyStores.map((store) => (
-              <div key={store.storeId} className="flex items-center justify-between px-5 py-3.5 hover:bg-red-50/20 transition-colors">
+              <div key={store.storeId} className="flex items-center justify-between px-5 py-3.5 hover:bg-sky-50/30 transition-colors">
                 <div className="flex items-center gap-3">
                   <div className={`flex h-9 w-9 items-center justify-center rounded-xl text-[12px] font-bold shrink-0 ${store.globalScore < 60 ? 'bg-red-50 text-red-700' : 'bg-amber-50 text-amber-700'}`}>
                     {store.globalScore}
@@ -206,8 +207,8 @@ export default function BrandManagerDashboard() {
           </div>
         </div>
 
-        <div className="rounded-xl border border-border/60 bg-white">
-          <div className="flex items-center gap-2 px-5 py-4 border-b border-border/40">
+        <div className="rounded-2xl border border-sky-100/60 bg-white">
+          <div className="flex items-center gap-2 px-5 py-4 border-b border-sky-50">
             <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-50">
               <Trophy className="h-3.5 w-3.5 text-emerald-600" />
             </div>
@@ -216,9 +217,9 @@ export default function BrandManagerDashboard() {
               <p className="text-[11px] text-muted-foreground">Meilleure exécution merchandising</p>
             </div>
           </div>
-          <div className="divide-y divide-border/30">
+          <div className="divide-y divide-sky-50">
             {topStores.map((store, i) => (
-              <div key={store.storeId} className="flex items-center justify-between px-5 py-3.5 hover:bg-emerald-50/20 transition-colors">
+              <div key={store.storeId} className="flex items-center justify-between px-5 py-3.5 hover:bg-sky-50/30 transition-colors">
                 <div className="flex items-center gap-3">
                   <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-50 text-[11px] font-bold text-emerald-700 shrink-0">
                     #{i + 1}
@@ -238,19 +239,19 @@ export default function BrandManagerDashboard() {
       </div>
 
       {/* Performance by Store (brand-specific) */}
-      <div className="rounded-xl border border-border/60 bg-white">
-        <div className="flex items-center gap-2 px-5 py-4 border-b border-border/40">
-          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-indigo-50">
-            <Target className="h-3.5 w-3.5 text-indigo-600" />
+      <div className="rounded-2xl border border-sky-100/60 bg-white">
+        <div className="flex items-center gap-2 px-5 py-4 border-b border-sky-50">
+          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-sky-50">
+            <Target className="h-3.5 w-3.5 text-sky-600" />
           </div>
           <div>
             <h3 className="text-[14px] font-semibold text-foreground">Performance {brand.brandName} par magasin</h3>
             <p className="text-[11px] text-muted-foreground">Écarts de performance entre points de vente</p>
           </div>
         </div>
-        <div className="divide-y divide-border/30">
+        <div className="divide-y divide-sky-50">
           {mockBrandByStore.slice(0, 6).map((store) => (
-            <div key={store.storeId} className="flex items-center justify-between px-5 py-3 hover:bg-slate-50/80 transition-colors">
+            <div key={store.storeId} className="flex items-center justify-between px-5 py-3 hover:bg-sky-50/30 transition-colors">
               <div className="flex items-center gap-3 flex-1 min-w-0">
                 <div className={`flex h-8 w-8 items-center justify-center rounded-lg text-[11px] font-bold shrink-0 ${
                   store.score >= 80 ? 'bg-emerald-50 text-emerald-700' : store.score >= 60 ? 'bg-amber-50 text-amber-700' : 'bg-red-50 text-red-700'

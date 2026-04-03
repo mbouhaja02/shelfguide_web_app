@@ -765,8 +765,8 @@ export function getActionsForAudit(auditId: string) { return mockActions.filter(
 
 export const mockActionStatusDistribution: { status: string; count: number; color: string }[] = [
   { status: 'À faire', count: mockActions.filter(a => a.status === 'todo').length, color: '#f59e0b' },
-  { status: 'En cours', count: mockActions.filter(a => a.status === 'in_progress').length, color: '#6366f1' },
+  { status: 'En cours', count: mockActions.filter(a => a.status === 'in_progress').length, color: '#0ea5e9' },
   { status: 'Corrigé', count: mockActions.filter(a => a.status === 'corrected').length, color: '#22c55e' },
-  { status: 'À valider', count: mockActions.filter(a => a.status === 'to_validate').length, color: '#8b5cf6' },
+  { status: 'À valider', count: mockActions.filter(a => a.status === 'to_validate').length, color: '#38bdf8' },
   { status: 'Rejeté', count: mockActions.filter(a => a.status === 'rejected').length, color: '#ef4444' },
 ];

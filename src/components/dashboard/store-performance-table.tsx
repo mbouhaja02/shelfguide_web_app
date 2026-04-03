@@ -44,7 +44,7 @@ export function StorePerformanceTable({ stores }: StorePerformanceTableProps) {
         </TableHeader>
         <TableBody>
           {stores.map((store) => (
-            <TableRow key={store.storeId} className="hover:bg-indigo-50/30 transition-colors">
+            <TableRow key={store.storeId} className="hover:bg-sky-50/40 transition-colors">
               <TableCell>
                 <div className="flex items-center gap-2.5">
                   <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-slate-100 text-[10px] font-bold text-slate-600 shrink-0">

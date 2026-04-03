@@ -23,7 +23,7 @@ interface AuditTableProps {
 
 export function AuditTable({ audits, basePath }: AuditTableProps) {
   return (
-    <div className="rounded-xl border border-border/60 bg-white overflow-hidden">
+    <div className="rounded-2xl border border-sky-100/60 bg-white overflow-hidden">
       <Table>
         <TableHeader>
           <TableRow className="bg-slate-50/80 hover:bg-slate-50/80">
@@ -44,7 +44,7 @@ export function AuditTable({ audits, basePath }: AuditTableProps) {
             const dept = getDepartment(audit.departmentId);
             const cat = getCategory(audit.categoryId);
             return (
-              <TableRow key={audit.id} className="group hover:bg-indigo-50/30 transition-colors">
+              <TableRow key={audit.id} className="group hover:bg-sky-50/40 transition-colors">
                 <TableCell className="font-mono text-[11px] text-muted-foreground/70">
                   {audit.id.slice(0, 8).toUpperCase()}
                 </TableCell>

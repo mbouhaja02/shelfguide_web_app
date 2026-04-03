@@ -33,7 +33,7 @@ export default function AuditDetailPage({ params }: { params: Promise<{ id: stri
         title="Audit introuvable"
         description="L'audit demandé n'existe pas ou a été supprimé."
         action={
-          <Link href="/chef-rayon/audits" className="inline-flex items-center gap-2 rounded-xl border border-border/60 bg-white px-4 py-2 text-[13px] font-medium hover:bg-slate-50 transition-colors">
+          <Link href="/chef-rayon/audits" className="inline-flex items-center gap-2 rounded-2xl border border-sky-100/60 bg-white px-4 py-2 text-[13px] font-medium hover:bg-sky-50/50 transition-colors">
             Retour aux audits
           </Link>
         }
@@ -53,7 +53,7 @@ export default function AuditDetailPage({ params }: { params: Promise<{ id: stri
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-start gap-3">
-        <Link href="/chef-rayon/audits" className="mt-1 flex h-8 w-8 items-center justify-center rounded-lg hover:bg-slate-100 transition-colors">
+        <Link href="/chef-rayon/audits" className="mt-1 flex h-8 w-8 items-center justify-center rounded-lg hover:bg-sky-50/40 transition-colors">
           <ArrowLeft className="h-4 w-4" />
         </Link>
         <div className="flex-1">
@@ -82,34 +82,34 @@ export default function AuditDetailPage({ params }: { params: Promise<{ id: stri
         {/* Right column - Info + Metrics */}
         <div className="space-y-5">
           {/* Metrics Card */}
-          <div className="rounded-xl border border-border/60 bg-white overflow-hidden">
-            <div className="flex items-center gap-2 border-b border-border/30 px-5 py-3.5">
-              <div className="flex h-6 w-6 items-center justify-center rounded-md bg-indigo-50">
-                <BarChart3 className="h-3.5 w-3.5 text-indigo-600" />
+          <div className="rounded-2xl border border-sky-100/60 bg-white overflow-hidden">
+            <div className="flex items-center gap-2 border-b border-sky-50 px-5 py-3.5">
+              <div className="flex h-6 w-6 items-center justify-center rounded-md bg-sky-50">
+                <BarChart3 className="h-3.5 w-3.5 text-sky-600" />
               </div>
               <h3 className="text-[14px] font-semibold">Métriques</h3>
             </div>
             <div className="p-5 space-y-3">
               <div className="grid grid-cols-2 gap-2.5">
-                <div className="rounded-xl bg-slate-50/80 p-3 text-center">
+                <div className="rounded-xl bg-sky-50/50/80 p-3 text-center">
                   <p className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground/70">Score</p>
                   <p className={`text-2xl font-bold tabular-nums ${scoreColor}`}>{audit.metrics.score}</p>
                 </div>
-                <div className="rounded-xl bg-slate-50/80 p-3 text-center">
+                <div className="rounded-xl bg-sky-50/50/80 p-3 text-center">
                   <p className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground/70">Fill Rate</p>
                   <p className="text-2xl font-bold tabular-nums">{audit.metrics.fillRate}%</p>
                 </div>
-                <div className="rounded-xl bg-slate-50/80 p-3 text-center">
+                <div className="rounded-xl bg-sky-50/50/80 p-3 text-center">
                   <p className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground/70">Zones vides</p>
                   <p className="text-xl font-bold tabular-nums">{audit.metrics.emptyZonesCount}</p>
                 </div>
-                <div className="rounded-xl bg-slate-50/80 p-3 text-center">
+                <div className="rounded-xl bg-sky-50/50/80 p-3 text-center">
                   <p className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground/70">Anomalies</p>
                   <p className="text-xl font-bold tabular-nums">{audit.metrics.anomaliesCount}</p>
                 </div>
               </div>
               {audit.metrics.complianceRate !== undefined && (
-                <div className="flex justify-between text-[13px] border-t border-border/30 pt-3">
+                <div className="flex justify-between text-[13px] border-t border-sky-50 pt-3">
                   <span className="text-muted-foreground">Conformité</span>
                   <span className="font-medium tabular-nums">{audit.metrics.complianceRate}%</span>
                 </div>
@@ -122,8 +122,8 @@ export default function AuditDetailPage({ params }: { params: Promise<{ id: stri
           </div>
 
           {/* Info Card */}
-          <div className="rounded-xl border border-border/60 bg-white overflow-hidden">
-            <div className="border-b border-border/30 px-5 py-3.5">
+          <div className="rounded-2xl border border-sky-100/60 bg-white overflow-hidden">
+            <div className="border-b border-sky-50 px-5 py-3.5">
               <h3 className="text-[14px] font-semibold">Informations</h3>
             </div>
             <div className="p-5 space-y-3 text-[13px]">
@@ -152,7 +152,7 @@ export default function AuditDetailPage({ params }: { params: Promise<{ id: stri
                 <span className="text-muted-foreground">Date :</span>
                 <span className="font-medium">{format(new Date(audit.createdAt), 'dd MMMM yyyy à HH:mm', { locale: fr })}</span>
               </div>
-              <div className="text-[11px] text-muted-foreground pt-2 border-t border-border/30">
+              <div className="text-[11px] text-muted-foreground pt-2 border-t border-sky-50">
                 Type : {audit.type === 'empty_shelves' ? 'Empty Shelves' : 'Standard'} · Analyse : {audit.analysisType === 'ai_api' ? 'IA API' : 'Simulation locale'}
               </div>
             </div>
@@ -160,8 +160,8 @@ export default function AuditDetailPage({ params }: { params: Promise<{ id: stri
 
           {/* Comment */}
           {audit.comment && (
-            <div className="rounded-xl border border-border/60 bg-white overflow-hidden">
-              <div className="flex items-center gap-2 border-b border-border/30 px-5 py-3.5">
+            <div className="rounded-2xl border border-sky-100/60 bg-white overflow-hidden">
+              <div className="flex items-center gap-2 border-b border-sky-50 px-5 py-3.5">
                 <MessageSquare className="h-4 w-4 text-muted-foreground/60" />
                 <h3 className="text-[14px] font-semibold">Commentaire</h3>
               </div>
@@ -173,8 +173,8 @@ export default function AuditDetailPage({ params }: { params: Promise<{ id: stri
 
           {/* Validation */}
           {audit.validationComment && (
-            <div className="rounded-xl border border-border/60 bg-white overflow-hidden">
-              <div className="flex items-center gap-2 border-b border-border/30 px-5 py-3.5">
+            <div className="rounded-2xl border border-sky-100/60 bg-white overflow-hidden">
+              <div className="flex items-center gap-2 border-b border-sky-50 px-5 py-3.5">
                 {audit.status === 'validated' ? (
                   <CheckCircle2 className="h-4 w-4 text-green-600" />
                 ) : (

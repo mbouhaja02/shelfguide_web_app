@@ -45,7 +45,7 @@ export default function BrandPerformancePage() {
           change={4}
           trend="up"
           icon={BarChart3}
-          iconColor="text-indigo-600"
+          iconColor="text-sky-600"
         />
         <KPIStatCard
           label="Conformité planogramme"
@@ -87,28 +87,28 @@ export default function BrandPerformancePage() {
       >
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {categoryPerformance.map((cat) => (
-            <div key={cat.category} className="rounded-xl border border-border/60 bg-white overflow-hidden hover:shadow-md hover:shadow-black/[0.04] transition-all">
-              <div className="flex items-center gap-2 border-b border-border/30 px-5 py-3.5">
-                <div className="flex h-6 w-6 items-center justify-center rounded-md bg-indigo-50">
-                  <Package className="h-3.5 w-3.5 text-indigo-600" />
+            <div key={cat.category} className="rounded-2xl border border-sky-100/60 bg-white overflow-hidden hover:shadow-md hover:shadow-black/[0.04] transition-all">
+              <div className="flex items-center gap-2 border-b border-sky-50 px-5 py-3.5">
+                <div className="flex h-6 w-6 items-center justify-center rounded-md bg-sky-50">
+                  <Package className="h-3.5 w-3.5 text-sky-600" />
                 </div>
                 <h3 className="text-[13px] font-semibold">{cat.category}</h3>
               </div>
               <div className="p-4">
                 <div className="grid grid-cols-2 gap-2">
-                  <div className="rounded-xl bg-slate-50/80 p-2.5 text-center">
+                  <div className="rounded-xl bg-sky-50/50/80 p-2.5 text-center">
                     <p className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground/70">Fill Rate</p>
                     <p className={`text-lg font-bold tabular-nums ${cat.fillRate >= 80 ? 'text-green-600' : cat.fillRate >= 60 ? 'text-amber-600' : 'text-red-600'}`}>{cat.fillRate}%</p>
                   </div>
-                  <div className="rounded-xl bg-slate-50/80 p-2.5 text-center">
+                  <div className="rounded-xl bg-sky-50/50/80 p-2.5 text-center">
                     <p className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground/70">Conformité</p>
                     <p className={`text-lg font-bold tabular-nums ${cat.compliance >= 80 ? 'text-green-600' : cat.compliance >= 60 ? 'text-amber-600' : 'text-red-600'}`}>{cat.compliance}%</p>
                   </div>
-                  <div className="rounded-xl bg-slate-50/80 p-2.5 text-center">
+                  <div className="rounded-xl bg-sky-50/50/80 p-2.5 text-center">
                     <p className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground/70">Ruptures</p>
                     <p className="text-lg font-bold tabular-nums">{cat.ruptures}</p>
                   </div>
-                  <div className="rounded-xl bg-slate-50/80 p-2.5 text-center">
+                  <div className="rounded-xl bg-sky-50/50/80 p-2.5 text-center">
                     <p className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground/70">Facings</p>
                     <p className="text-lg font-bold tabular-nums">{cat.facings}</p>
                   </div>

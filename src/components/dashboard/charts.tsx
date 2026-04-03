@@ -21,9 +21,9 @@ interface BarChartCardProps {
   className?: string;
 }
 
-export function BarChartCard({ title, data, color = '#6366f1', className }: BarChartCardProps) {
+export function BarChartCard({ title, data, color = '#0ea5e9', className }: BarChartCardProps) {
   return (
-    <div className={`rounded-xl border border-border/60 bg-white p-5 ${className || ''}`}>
+    <div className={`rounded-2xl border border-sky-100/60 bg-white p-5 ${className || ''}`}>
       <h3 className="text-[13px] font-semibold text-foreground mb-1">{title}</h3>
       <div className="h-[250px] mt-4">
         <ResponsiveContainer width="100%" height="100%">
@@ -51,7 +51,7 @@ interface PieChartCardProps {
 
 export function PieChartCard({ title, data, className }: PieChartCardProps) {
   return (
-    <div className={`rounded-xl border border-border/60 bg-white p-5 ${className || ''}`}>
+    <div className={`rounded-2xl border border-sky-100/60 bg-white p-5 ${className || ''}`}>
       <h3 className="text-[13px] font-semibold text-foreground mb-1">{title}</h3>
       <div className="h-[250px] mt-4">
         <ResponsiveContainer width="100%" height="100%">

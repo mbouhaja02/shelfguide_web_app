@@ -19,7 +19,7 @@ export default function ActionDetailPage({ params }: { params: Promise<{ id: str
         title="Action introuvable"
         description="L'action corrective demandée n'existe pas."
         action={
-          <Link href="/chef-rayon/actions" className="inline-flex items-center gap-2 rounded-xl border border-border/60 bg-white px-4 py-2 text-[13px] font-medium hover:bg-slate-50 transition-colors">
+          <Link href="/chef-rayon/actions" className="inline-flex items-center gap-2 rounded-2xl border border-sky-100/60 bg-white px-4 py-2 text-[13px] font-medium hover:bg-sky-50/50 transition-colors">
             Retour aux actions
           </Link>
         }
@@ -35,7 +35,7 @@ export default function ActionDetailPage({ params }: { params: Promise<{ id: str
   return (
     <div className="space-y-5 max-w-3xl">
       <div className="flex items-start gap-3">
-        <Link href="/chef-rayon/actions" className="mt-1 flex h-8 w-8 items-center justify-center rounded-lg hover:bg-slate-100 transition-colors">
+        <Link href="/chef-rayon/actions" className="mt-1 flex h-8 w-8 items-center justify-center rounded-lg hover:bg-sky-50/40 transition-colors">
           <ArrowLeft className="h-4 w-4" />
         </Link>
         <div className="flex-1">
@@ -48,8 +48,8 @@ export default function ActionDetailPage({ params }: { params: Promise<{ id: str
         </div>
       </div>
 
-      <div className="rounded-xl border border-border/60 bg-white overflow-hidden">
-        <div className="border-b border-border/30 px-5 py-3.5">
+      <div className="rounded-2xl border border-sky-100/60 bg-white overflow-hidden">
+        <div className="border-b border-sky-50 px-5 py-3.5">
           <h3 className="text-[14px] font-semibold">Description</h3>
         </div>
         <div className="p-5">
@@ -57,8 +57,8 @@ export default function ActionDetailPage({ params }: { params: Promise<{ id: str
         </div>
       </div>
 
-      <div className="rounded-xl border border-border/60 bg-white overflow-hidden">
-        <div className="border-b border-border/30 px-5 py-3.5">
+      <div className="rounded-2xl border border-sky-100/60 bg-white overflow-hidden">
+        <div className="border-b border-sky-50 px-5 py-3.5">
           <h3 className="text-[14px] font-semibold">Détails</h3>
         </div>
         <div className="p-5 space-y-3 text-[13px]">
@@ -101,13 +101,13 @@ export default function ActionDetailPage({ params }: { params: Promise<{ id: str
       </div>
 
       {audit && (
-        <div className="rounded-xl border border-border/60 bg-white overflow-hidden">
-          <div className="flex items-center gap-2 border-b border-border/30 px-5 py-3.5">
+        <div className="rounded-2xl border border-sky-100/60 bg-white overflow-hidden">
+          <div className="flex items-center gap-2 border-b border-sky-50 px-5 py-3.5">
             <LinkIcon className="h-4 w-4 text-muted-foreground/60" />
             <h3 className="text-[14px] font-semibold">Audit d&apos;origine</h3>
           </div>
           <div className="p-5">
-            <Link href={`/chef-rayon/audits/${audit.id}`} className="flex items-center justify-between p-3 rounded-xl border border-border/60 hover:bg-slate-50/80 transition-colors">
+            <Link href={`/chef-rayon/audits/${audit.id}`} className="flex items-center justify-between p-3 rounded-2xl border border-sky-100/60 hover:bg-sky-50/50/80 transition-colors">
               <div>
                 <p className="text-[13px] font-medium">Audit {audit.id.toUpperCase()}</p>
                 <p className="text-[11px] text-muted-foreground">Score {audit.metrics.score}/100 · {audit.metrics.emptyZonesCount} zones vides</p>
@@ -120,12 +120,12 @@ export default function ActionDetailPage({ params }: { params: Promise<{ id: str
 
       <div className="flex gap-3">
         {action.status === 'todo' && (
-          <button className="h-9 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-600 px-5 text-[13px] font-medium text-white hover:from-indigo-600 hover:to-violet-700 transition-all">
+          <button className="h-9 rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 px-5 text-[13px] font-medium text-white hover:from-sky-600 hover:to-cyan-600 transition-all">
             Commencer l&apos;action
           </button>
         )}
         {action.status === 'in_progress' && (
-          <button className="h-9 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-600 px-5 text-[13px] font-medium text-white hover:from-indigo-600 hover:to-violet-700 transition-all">
+          <button className="h-9 rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 px-5 text-[13px] font-medium text-white hover:from-sky-600 hover:to-cyan-600 transition-all">
             Marquer comme corrigé
           </button>
         )}

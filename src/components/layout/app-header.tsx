@@ -26,8 +26,8 @@ export function AppHeader({ onMenuToggle }: AppHeaderProps) {
   const roleLabel = user?.role === 'chef_rayon' ? 'Chef de rayon' : 'Brand Manager';
 
   return (
-    <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b border-border/50 glass px-4 lg:px-6">
-      <button className="lg:hidden p-2 -ml-2 rounded-lg hover:bg-black/5 transition-colors" onClick={onMenuToggle}>
+    <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b border-sky-100/60 glass px-4 lg:px-6">
+      <button className="lg:hidden p-2 -ml-2 rounded-lg hover:bg-sky-50 transition-colors" onClick={onMenuToggle}>
         <Menu className="h-5 w-5 text-muted-foreground" />
       </button>
 
@@ -36,9 +36,9 @@ export function AppHeader({ onMenuToggle }: AppHeaderProps) {
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground/60" />
           <input
             placeholder="Rechercher un magasin, audit, action..."
-            className="w-full h-8 rounded-lg bg-black/[0.04] pl-9 pr-3 text-sm text-foreground placeholder:text-muted-foreground/50 outline-none ring-0 focus:bg-black/[0.06] focus:ring-1 focus:ring-primary/20 transition-all"
+            className="w-full h-8 rounded-xl bg-sky-50/60 pl-9 pr-3 text-sm text-foreground placeholder:text-muted-foreground/50 outline-none ring-0 focus:bg-sky-50 focus:ring-1 focus:ring-sky-300/40 transition-all"
           />
-          <kbd className="absolute right-2.5 top-1/2 -translate-y-1/2 hidden sm:inline-flex h-5 items-center gap-1 rounded border bg-muted/70 px-1.5 text-[10px] font-medium text-muted-foreground/70">
+          <kbd className="absolute right-2.5 top-1/2 -translate-y-1/2 hidden sm:inline-flex h-5 items-center gap-1 rounded-md border border-sky-200/60 bg-sky-50/60 px-1.5 text-[10px] font-medium text-muted-foreground/70">
             ⌘K
           </kbd>
         </div>
@@ -49,22 +49,22 @@ export function AppHeader({ onMenuToggle }: AppHeaderProps) {
 
         <Link
           href={user?.role === 'chef_rayon' ? '/chef-rayon/notifications' : '/brand-manager/notifications'}
-          className="relative p-2 rounded-lg hover:bg-black/5 transition-colors"
+          className="relative p-2 rounded-lg hover:bg-sky-50 transition-colors"
         >
           <Bell className="h-[18px] w-[18px] text-muted-foreground" />
           {unreadCount > 0 && (
-            <span className="absolute top-1.5 right-1.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-red-500 px-1 text-[9px] font-bold text-white ring-2 ring-white">
+            <span className="absolute top-1.5 right-1.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-sky-500 px-1 text-[9px] font-bold text-white ring-2 ring-white">
               {unreadCount}
             </span>
           )}
         </Link>
 
-        <div className="w-px h-6 bg-border/60 mx-1 hidden sm:block" />
+        <div className="w-px h-6 bg-sky-200/50 mx-1 hidden sm:block" />
 
         <DropdownMenu>
-          <DropdownMenuTrigger className="flex items-center gap-2.5 py-1 px-2 rounded-lg hover:bg-black/5 transition-colors cursor-pointer outline-none">
-            <Avatar className="h-7 w-7 ring-2 ring-primary/10">
-              <AvatarFallback className="bg-gradient-to-br from-indigo-500 to-violet-600 text-white text-[10px] font-bold">{initials}</AvatarFallback>
+          <DropdownMenuTrigger className="flex items-center gap-2.5 py-1 px-2 rounded-lg hover:bg-sky-50 transition-colors cursor-pointer outline-none">
+            <Avatar className="h-7 w-7 ring-2 ring-sky-200/40">
+              <AvatarFallback className="bg-gradient-to-br from-sky-400 to-cyan-500 text-white text-[10px] font-bold">{initials}</AvatarFallback>
             </Avatar>
             <div className="hidden lg:flex flex-col items-start text-left">
               <span className="text-[13px] font-medium leading-none text-foreground">{user?.fullName}</span>
