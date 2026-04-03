@@ -16,14 +16,14 @@ export default function ProfilePage() {
     <div className="space-y-6 max-w-2xl">
       <h1 className="text-[22px] font-semibold tracking-tight">Mon profil</h1>
 
-      <div className="rounded-2xl border border-sky-100/60 bg-white p-6">
+      <div className="rounded-2xl border border-[#e2e9f2] bg-white p-6">
         <div className="flex items-center gap-4 mb-6">
-          <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-500 to-cyan-500 text-white text-xl font-bold">
+          <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#1a2332] text-white text-xl font-bold">
             {initials}
           </div>
           <div>
             <h2 className="text-xl font-semibold">{user.fullName}</h2>
-            <span className="inline-flex items-center rounded-full bg-sky-50 px-2.5 py-0.5 text-[11px] font-medium text-sky-700 mt-1">
+            <span className="inline-flex items-center rounded-full bg-[#f0f3f7] px-2.5 py-0.5 text-[11px] font-medium text-[#2d9cdb] mt-1">
               {roleLabel}
             </span>
           </div>
@@ -54,10 +54,10 @@ export default function ProfilePage() {
       </div>
 
       <div className="flex gap-3">
-        <button className="h-9 rounded-2xl border border-sky-100/60 bg-white px-4 text-[13px] font-medium hover:bg-sky-50/50 transition-colors">
+        <button className="h-9 rounded-2xl border border-[#e2e9f2] bg-white px-4 text-[13px] font-medium hover:bg-[#f8fafb] transition-colors">
           Modifier le profil
         </button>
-        <button className="h-9 rounded-2xl border border-sky-100/60 bg-white px-4 text-[13px] font-medium hover:bg-sky-50/50 transition-colors">
+        <button className="h-9 rounded-2xl border border-[#e2e9f2] bg-white px-4 text-[13px] font-medium hover:bg-[#f8fafb] transition-colors">
           Changer le mot de passe
         </button>
       </div>

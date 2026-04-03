@@ -21,7 +21,7 @@ export default function BrandAuditDetailPage({ params }: { params: Promise<{ id:
         title="Audit introuvable"
         description="L'audit demandé n'existe pas."
         action={
-          <Link href="/brand-manager/audits" className="inline-flex items-center gap-2 rounded-2xl border border-sky-100/60 bg-white px-4 py-2 text-[13px] font-medium hover:bg-sky-50/50 transition-colors">
+          <Link href="/brand-manager/audits" className="inline-flex items-center gap-2 rounded-2xl border border-[#e2e9f2] bg-white px-4 py-2 text-[13px] font-medium hover:bg-[#f8fafb] transition-colors">
             Retour
           </Link>
         }
@@ -38,7 +38,7 @@ export default function BrandAuditDetailPage({ params }: { params: Promise<{ id:
   return (
     <div className="space-y-6">
       <div className="flex items-start gap-3">
-        <Link href="/brand-manager/audits" className="mt-1 flex h-8 w-8 items-center justify-center rounded-lg hover:bg-sky-50/40 transition-colors">
+        <Link href="/brand-manager/audits" className="mt-1 flex h-8 w-8 items-center justify-center rounded-lg hover:bg-[#fafbfd] transition-colors">
           <ArrowLeft className="h-4 w-4" />
         </Link>
         <div>
@@ -57,36 +57,36 @@ export default function BrandAuditDetailPage({ params }: { params: Promise<{ id:
           <ZoneList zones={audit.emptyZones} />
         </div>
         <div className="space-y-5">
-          <div className="rounded-2xl border border-sky-100/60 bg-white overflow-hidden">
-            <div className="flex items-center gap-2 border-b border-sky-50 px-5 py-3.5">
-              <div className="flex h-6 w-6 items-center justify-center rounded-md bg-sky-50">
-                <BarChart3 className="h-3.5 w-3.5 text-sky-600" />
+          <div className="rounded-2xl border border-[#e2e9f2] bg-white overflow-hidden">
+            <div className="flex items-center gap-2 border-b border-[#f0f3f7] px-5 py-3.5">
+              <div className="flex h-6 w-6 items-center justify-center rounded-md bg-[#f0f3f7]">
+                <BarChart3 className="h-3.5 w-3.5 text-primary" />
               </div>
               <h3 className="text-[14px] font-semibold">Métriques</h3>
             </div>
             <div className="p-5">
               <div className="grid grid-cols-2 gap-2.5">
-                <div className="rounded-xl bg-sky-50/50/80 p-3 text-center">
+                <div className="rounded-xl bg-[#f0f3f7] p-3 text-center">
                   <p className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground/70">Score</p>
                   <p className={`text-2xl font-bold tabular-nums ${scoreColor}`}>{audit.metrics.score}</p>
                 </div>
-                <div className="rounded-xl bg-sky-50/50/80 p-3 text-center">
+                <div className="rounded-xl bg-[#f0f3f7] p-3 text-center">
                   <p className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground/70">Fill Rate</p>
                   <p className="text-2xl font-bold tabular-nums">{audit.metrics.fillRate}%</p>
                 </div>
-                <div className="rounded-xl bg-sky-50/50/80 p-3 text-center">
+                <div className="rounded-xl bg-[#f0f3f7] p-3 text-center">
                   <p className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground/70">Zones vides</p>
                   <p className="text-xl font-bold tabular-nums">{audit.metrics.emptyZonesCount}</p>
                 </div>
-                <div className="rounded-xl bg-sky-50/50/80 p-3 text-center">
+                <div className="rounded-xl bg-[#f0f3f7] p-3 text-center">
                   <p className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground/70">Confiance</p>
                   <p className="text-xl font-bold tabular-nums">{Math.round(audit.metrics.confidence * 100)}%</p>
                 </div>
               </div>
             </div>
           </div>
-          <div className="rounded-2xl border border-sky-100/60 bg-white overflow-hidden">
-            <div className="border-b border-sky-50 px-5 py-3.5">
+          <div className="rounded-2xl border border-[#e2e9f2] bg-white overflow-hidden">
+            <div className="border-b border-[#f0f3f7] px-5 py-3.5">
               <h3 className="text-[14px] font-semibold">Informations</h3>
             </div>
             <div className="p-5 space-y-3 text-[13px]">
@@ -98,8 +98,8 @@ export default function BrandAuditDetailPage({ params }: { params: Promise<{ id:
             </div>
           </div>
           {audit.comment && (
-            <div className="rounded-2xl border border-sky-100/60 bg-white overflow-hidden">
-              <div className="flex items-center gap-2 border-b border-sky-50 px-5 py-3.5">
+            <div className="rounded-2xl border border-[#e2e9f2] bg-white overflow-hidden">
+              <div className="flex items-center gap-2 border-b border-[#f0f3f7] px-5 py-3.5">
                 <MessageSquare className="h-4 w-4 text-muted-foreground/60" />
                 <h3 className="text-[14px] font-semibold">Commentaire</h3>
               </div>

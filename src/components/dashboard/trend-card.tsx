@@ -21,7 +21,7 @@ interface TrendCardProps {
   className?: string;
 }
 
-export function TrendCard({ title, data, color = '#0ea5e9', unit = '', className }: TrendCardProps) {
+export function TrendCard({ title, data, color = '#2d9cdb', unit = '', className }: TrendCardProps) {
   const formatted = data.map(d => ({
     ...d,
     dateLabel: format(new Date(d.date), 'dd MMM', { locale: fr }),
@@ -30,7 +30,7 @@ export function TrendCard({ title, data, color = '#0ea5e9', unit = '', className
   const gradientId = `gradient-${title.replace(/\s/g, '')}`;
 
   return (
-    <div className={`rounded-2xl border border-sky-100/60 bg-white p-5 ${className || ''}`}>
+    <div className={`card-base animate-slide-up p-5 ${className || ''}`}>
       <h3 className="text-[13px] font-semibold text-foreground mb-1">{title}</h3>
       <div className="h-[200px] mt-4">
         <ResponsiveContainer width="100%" height="100%">

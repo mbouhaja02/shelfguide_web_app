@@ -39,7 +39,7 @@ const actionStatusConfig: Record<CorrectiveActionStatus, { label: string; dot: s
   todo: { label: 'À faire', dot: 'bg-slate-400', className: 'bg-slate-50 text-slate-700' },
   in_progress: { label: 'En cours', dot: 'bg-blue-400', className: 'bg-blue-50 text-blue-700' },
   corrected: { label: 'Corrigé', dot: 'bg-emerald-400', className: 'bg-emerald-50 text-emerald-700' },
-  to_validate: { label: 'À valider', dot: 'bg-sky-400', className: 'bg-sky-50 text-sky-700' },
+  to_validate: { label: 'À valider', dot: 'bg-[#56b3e6]', className: 'bg-[#f0f3f7] text-[#2d9cdb]' },
   rejected: { label: 'Rejeté', dot: 'bg-red-400', className: 'bg-red-50 text-red-700' },
 };
 

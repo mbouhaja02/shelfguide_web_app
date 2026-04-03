@@ -21,9 +21,9 @@ export function RecentAlertsList({ audits, basePath, maxItems = 5 }: RecentAlert
     .slice(0, maxItems);
 
   return (
-    <div className="rounded-2xl border border-sky-100/60 bg-white">
-      <div className="flex items-center gap-2 px-5 py-4 border-b border-border/40">
-        <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-amber-50">
+    <div className="card-base">
+      <div className="flex items-center gap-2.5 px-5 py-4 border-b border-[#f0f3f7]">
+        <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-amber-50/80">
           <AlertTriangle className="h-3.5 w-3.5 text-amber-600" />
         </div>
         <h3 className="text-[13px] font-semibold text-foreground">Alertes prioritaires</h3>

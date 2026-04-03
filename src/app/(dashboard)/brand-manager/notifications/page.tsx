@@ -26,14 +26,14 @@ export default function BrandNotificationsPage() {
           const Icon = iconMap[notif.type];
           return (
             <Link key={notif.id} href={notif.actionUrl || '#'}>
-              <div className={cn('rounded-2xl border border-sky-100/60 bg-white p-4 flex items-start gap-3 hover:shadow-md hover:shadow-black/[0.04] transition-all cursor-pointer', !notif.read && 'border-l-4 border-l-sky-500')}>
+              <div className={cn('rounded-2xl border border-[#e2e9f2] bg-white p-4 flex items-start gap-3 hover:shadow-md hover:shadow-black/[0.04] transition-all cursor-pointer', !notif.read && 'border-l-4 border-l-[#2d9cdb]')}>
                 <div className={cn('flex h-9 w-9 items-center justify-center rounded-xl shrink-0', colorMap[notif.type])}>
                   <Icon className="h-4 w-4" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-0.5">
                     <h4 className={cn('text-[13px] font-semibold', !notif.read && 'text-foreground')}>{notif.title}</h4>
-                    {!notif.read && <div className="h-2 w-2 rounded-full bg-sky-500" />}
+                    {!notif.read && <div className="h-2 w-2 rounded-full bg-[#f0f3f7]0" />}
                   </div>
                   <p className="text-[12px] text-muted-foreground">{notif.message}</p>
                   <p className="text-[11px] text-muted-foreground/60 mt-1">{format(new Date(notif.createdAt), 'dd MMM à HH:mm', { locale: fr })}</p>

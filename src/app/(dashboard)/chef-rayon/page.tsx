@@ -62,107 +62,112 @@ export default function ChefRayonDashboard() {
 
   const firstName = user?.fullName?.split(' ')[0] || 'Chef';
 
+  // Time-aware greeting
+  const hour = new Date().getHours();
+  const greeting = hour < 12 ? 'Bonjour' : hour < 18 ? 'Bon après-midi' : 'Bonsoir';
+
   return (
-    <div className="space-y-7 animate-fade-in">
-      {/* Header with gradient accent */}
-      <div className="relative rounded-2xl bg-gradient-to-r from-sky-500 via-cyan-500 to-sky-400 p-6 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMSIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA4KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNnKSIvPjwvc3ZnPg==')] opacity-40" />
-        <div className="relative flex items-end justify-between">
+    <div className="space-y-6 lg:space-y-8">
+      {/* Header — warm, human, no gradient banner */}
+      <div className="animate-fade-in">
+        <div className="flex items-end justify-between mb-1">
           <div>
-            <h1 className="text-[26px] font-bold tracking-tight">
-              Bonjour, {firstName}
+            <h1 className="text-[22px] lg:text-[26px] font-bold tracking-tight text-foreground font-[var(--font-heading)]">
+              {greeting}, {firstName} 👋
             </h1>
-            <p className="text-white/80 text-[14px] mt-1">
-              Pilotage opérationnel — {format(new Date(), 'EEEE d MMMM yyyy', { locale: fr })}
+            <p className="text-[13px] text-muted-foreground mt-1.5 leading-relaxed">
+              {format(new Date(), 'EEEE d MMMM yyyy', { locale: fr })} · <span className="text-foreground/70 font-medium">{todayAudits.length} audits aujourd&apos;hui</span>
             </p>
           </div>
           <Link
             href="/chef-rayon/audits"
-            className="hidden sm:inline-flex items-center gap-1.5 text-[13px] font-medium text-white/90 bg-white/15 hover:bg-white/25 rounded-xl px-4 py-2 backdrop-blur-sm transition-all"
+            className="hidden sm:inline-flex items-center gap-1.5 text-[12px] font-medium text-primary hover:text-primary/80 transition-colors group"
           >
-            Voir tous les audits <ArrowRight className="h-3.5 w-3.5" />
+            Tous les audits <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
           </Link>
         </div>
+        {/* Subtle warm accent line — asymmetric, not a perfect gradient */}
+        <div className="h-[3px] w-16 rounded-full bg-primary mt-3 opacity-60" />
       </div>
 
-      {/* KPIs */}
-      <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
-        <KPIStatCard label="Audits du jour" value={todayAudits.length} change={20} changeLabel="vs hier" trend="up" icon={ClipboardCheck} iconColor="text-sky-600" />
-        <KPIStatCard label="Anomalies critiques" value={criticalAnomalies.length} trend="down" change={-15} changeLabel="vs sem." icon={AlertTriangle} iconColor="text-red-500" />
-        <KPIStatCard label="Actions ouvertes" value={openActions.length} icon={Wrench} iconColor="text-amber-500" />
-        <KPIStatCard label="Taux correction" value={`${correctionRate}%`} trend="up" change={8} icon={CheckCircle2} iconColor="text-green-600" />
-        <KPIStatCard label="Score moyen" value={avgScore} trend="up" change={5} changeLabel="vs sem." icon={Target} iconColor="text-cyan-600" />
-        <KPIStatCard label="En attente" value={pendingAudits.length} icon={Clock} iconColor="text-purple-500" />
+      {/* KPIs — staggered animation */}
+      <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3 lg:gap-4">
+        <KPIStatCard index={0} label="Audits du jour" value={todayAudits.length} change={20} changeLabel="vs hier" trend="up" icon={ClipboardCheck} iconColor="text-primary" />
+        <KPIStatCard index={1} label="Anomalies critiques" value={criticalAnomalies.length} trend="down" change={-15} changeLabel="vs sem." icon={AlertTriangle} iconColor="text-red-500" />
+        <KPIStatCard index={2} label="Actions ouvertes" value={openActions.length} icon={Wrench} iconColor="text-amber-500" />
+        <KPIStatCard index={3} label="Taux correction" value={`${correctionRate}%`} trend="up" change={8} icon={CheckCircle2} iconColor="text-green-600" />
+        <KPIStatCard index={4} label="Score moyen" value={avgScore} trend="up" change={5} changeLabel="vs sem." icon={Target} iconColor="text-cyan-600" />
+        <KPIStatCard index={5} label="En attente" value={pendingAudits.length} icon={Clock} iconColor="text-purple-500" />
       </div>
 
       {/* Priorities + Problem Zones */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-        {/* Today Priorities */}
-        <div className="rounded-2xl border border-sky-100/60 bg-white">
-          <div className="flex items-center gap-2 px-5 py-4 border-b border-sky-50">
-            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-red-50">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-5">
+        {/* Today Priorities — accent left border for urgency */}
+        <div className="card-base card-accent-left animate-slide-up stagger-1" style={{ borderLeftColor: '#e74c3c' }}>
+          <div className="flex items-center gap-2.5 px-5 py-4 border-b border-[#f0f3f7]">
+            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-red-50/80">
               <Zap className="h-3.5 w-3.5 text-red-500" />
             </div>
             <div>
-              <h3 className="text-[14px] font-semibold text-foreground">Priorités du jour</h3>
-              <p className="text-[11px] text-muted-foreground">Actions nécessitant une intervention immédiate</p>
+              <h3 className="text-[13px] font-semibold text-foreground">Priorités du jour</h3>
+              <p className="text-[10px] text-muted-foreground mt-0.5">Intervention immédiate requise</p>
             </div>
           </div>
-          <div className="divide-y divide-sky-50">
+          <div className="divide-y divide-[#f4f7fb]">
             {todayActions.map((action) => {
               const store = getStore(action.storeId);
               return (
-                <Link key={action.id} href={`/chef-rayon/actions/${action.id}`} className="group flex items-start gap-3 px-5 py-3.5 hover:bg-sky-50/30 transition-colors">
-                  <div className={`mt-0.5 flex h-6 w-6 items-center justify-center rounded-full shrink-0 ${action.priority === 'critical' ? 'bg-red-100 text-red-600' : 'bg-orange-100 text-orange-600'}`}>
+                <Link key={action.id} href={`/chef-rayon/actions/${action.id}`} className="group flex items-start gap-3 px-5 py-3.5 hover:bg-[#fafbfd] transition-colors">
+                  <div className={`mt-0.5 flex h-6 w-6 items-center justify-center rounded-full shrink-0 ${action.priority === 'critical' ? 'bg-red-100/80 text-red-600' : 'bg-orange-100/80 text-orange-600'}`}>
                     <ShieldAlert className="h-3.5 w-3.5" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-[13px] font-medium text-foreground truncate">{action.title}</p>
+                    <p className="text-[13px] font-medium text-foreground truncate group-hover:text-primary transition-colors">{action.title}</p>
                     <div className="flex items-center gap-2 mt-1">
-                      <span className={`inline-flex items-center rounded-full px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider ${action.priority === 'critical' ? 'bg-red-100 text-red-700' : 'bg-orange-100 text-orange-700'}`}>
+                      <span className={`inline-flex items-center rounded-md px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider ${action.priority === 'critical' ? 'bg-red-100/80 text-red-700' : 'bg-orange-100/80 text-orange-700'}`}>
                         {action.priority === 'critical' ? 'Critique' : 'Haute'}
                       </span>
-                      <span className="text-[11px] text-muted-foreground flex items-center gap-1"><MapPin className="h-3 w-3" />{store?.name}</span>
+                      <span className="text-[10px] text-muted-foreground flex items-center gap-1"><MapPin className="h-3 w-3" />{store?.name}</span>
                     </div>
                   </div>
-                  <ArrowRight className="h-4 w-4 text-muted-foreground/30 group-hover:text-red-500 transition-colors mt-1 shrink-0" />
+                  <ArrowRight className="h-3.5 w-3.5 text-muted-foreground/20 group-hover:text-primary group-hover:translate-x-0.5 transition-all mt-1 shrink-0" />
                 </Link>
               );
             })}
             {todayActions.length === 0 && (
               <div className="flex flex-col items-center justify-center py-8">
-                <CheckCircle2 className="h-8 w-8 text-emerald-400 mb-2" />
-                <p className="text-[13px] text-muted-foreground">Aucune priorité urgente</p>
+                <CheckCircle2 className="h-7 w-7 text-emerald-400 mb-2" />
+                <p className="text-[12px] text-muted-foreground">Aucune priorité urgente</p>
               </div>
             )}
           </div>
         </div>
 
         {/* Problem Zones */}
-        <div className="rounded-2xl border border-sky-100/60 bg-white">
-          <div className="flex items-center gap-2 px-5 py-4 border-b border-sky-50">
-            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-amber-50">
+        <div className="card-base animate-slide-up stagger-2">
+          <div className="flex items-center gap-2.5 px-5 py-4 border-b border-[#f0f3f7]">
+            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-amber-50/80">
               <TrendingDown className="h-3.5 w-3.5 text-amber-600" />
             </div>
             <div>
-              <h3 className="text-[14px] font-semibold text-foreground">Zones les plus dégradées</h3>
-              <p className="text-[11px] text-muted-foreground">Rayons nécessitant une attention prioritaire</p>
+              <h3 className="text-[13px] font-semibold text-foreground">Zones dégradées</h3>
+              <p className="text-[10px] text-muted-foreground mt-0.5">Attention prioritaire requise</p>
             </div>
           </div>
-          <div className="divide-y divide-sky-50">
+          <div className="divide-y divide-[#f4f7fb]">
             {problemZones.map((zone, i) => (
-              <div key={i} className="flex items-center justify-between px-5 py-3.5 hover:bg-sky-50/30 transition-colors">
+              <div key={i} className="flex items-center justify-between px-5 py-3 hover:bg-[#fafbfd] transition-colors">
                 <div className="flex items-center gap-3">
-                  <div className={`flex h-9 w-9 items-center justify-center rounded-xl text-[12px] font-bold shrink-0 ${zone.score < 40 ? 'bg-red-50 text-red-700' : zone.score < 60 ? 'bg-amber-50 text-amber-700' : 'bg-yellow-50 text-yellow-700'}`}>
+                  <div className={`flex h-8 w-8 items-center justify-center rounded-lg text-[11px] font-bold shrink-0 ${zone.score < 40 ? 'bg-red-50/80 text-red-700' : zone.score < 60 ? 'bg-amber-50/80 text-amber-700' : 'bg-yellow-50/80 text-yellow-700'}`}>
                     {zone.score}
                   </div>
                   <div>
-                    <p className="text-[13px] font-medium text-foreground">{zone.dept}</p>
-                    <p className="text-[11px] text-muted-foreground">{zone.store}</p>
+                    <p className="text-[12px] font-medium text-foreground">{zone.dept}</p>
+                    <p className="text-[10px] text-muted-foreground">{zone.store}</p>
                   </div>
                 </div>
-                <span className="inline-flex items-center gap-1 text-[12px] text-red-600 font-semibold">
-                  <AlertTriangle className="h-3 w-3" />{zone.anomalies} anomalies
+                <span className="inline-flex items-center gap-1 text-[11px] text-red-600 font-semibold">
+                  <AlertTriangle className="h-3 w-3" />{zone.anomalies}
                 </span>
               </div>
             ))}
@@ -170,62 +175,61 @@ export default function ChefRayonDashboard() {
         </div>
       </div>
 
-      {/* Before/After + Trend */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-        <div className="rounded-2xl border border-sky-100/60 bg-white">
-          <div className="flex items-center gap-2 px-5 py-4 border-b border-sky-50">
-            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-50">
+      {/* Before/After + Trend — asymmetric widths */}
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 lg:gap-5">
+        <div className="lg:col-span-3 card-base animate-slide-up stagger-3">
+          <div className="flex items-center gap-2.5 px-5 py-4 border-b border-[#f0f3f7]">
+            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-50/80">
               <RotateCcw className="h-3.5 w-3.5 text-emerald-600" />
             </div>
-            <div>
-              <h3 className="text-[14px] font-semibold text-foreground">Avant / Après correction</h3>
-              <p className="text-[11px] text-muted-foreground">Progressions suite aux actions correctives</p>
-            </div>
+            <h3 className="text-[13px] font-semibold text-foreground">Avant / Après correction</h3>
           </div>
-          <div className="divide-y divide-sky-50">
+          <div className="divide-y divide-[#f4f7fb]">
             {beforeAfter.map((item, i) => (
               <div key={i} className="px-5 py-4">
-                <p className="text-[13px] font-medium text-foreground mb-3">{item.label}</p>
+                <p className="text-[12px] font-medium text-foreground mb-3">{item.label}</p>
                 <div className="flex items-center gap-4">
                   <div className="flex items-center gap-2 flex-1">
-                    <span className="text-[11px] text-muted-foreground w-12 shrink-0">Avant</span>
-                    <div className="flex-1 h-2.5 bg-sky-50 rounded-full overflow-hidden">
-                      <div className="h-full bg-red-400 rounded-full" style={{ width: `${item.before}%` }} />
+                    <span className="text-[10px] text-muted-foreground w-10 shrink-0">Avant</span>
+                    <div className="flex-1 h-2 bg-[#f0f3f7] rounded-full overflow-hidden">
+                      <div className="h-full bg-red-400/80 rounded-full transition-all duration-700" style={{ width: `${item.before}%` }} />
                     </div>
-                    <span className="text-[13px] font-bold text-red-600 w-10 text-right tabular-nums">{item.before}</span>
+                    <span className="text-[12px] font-bold text-red-600 w-8 text-right tabular-nums">{item.before}</span>
                   </div>
-                  <ArrowRight className="h-4 w-4 text-muted-foreground/40 shrink-0" />
+                  <ArrowRight className="h-3.5 w-3.5 text-muted-foreground/30 shrink-0" />
                   <div className="flex items-center gap-2 flex-1">
-                    <span className="text-[11px] text-muted-foreground w-12 shrink-0">Après</span>
-                    <div className="flex-1 h-2.5 bg-sky-50 rounded-full overflow-hidden">
-                      <div className="h-full bg-emerald-500 rounded-full" style={{ width: `${item.after}%` }} />
+                    <span className="text-[10px] text-muted-foreground w-10 shrink-0">Après</span>
+                    <div className="flex-1 h-2 bg-[#f0f3f7] rounded-full overflow-hidden">
+                      <div className="h-full bg-emerald-500 rounded-full transition-all duration-700" style={{ width: `${item.after}%` }} />
                     </div>
-                    <span className="text-[13px] font-bold text-emerald-600 w-10 text-right tabular-nums">{item.after}</span>
+                    <span className="text-[12px] font-bold text-emerald-600 w-8 text-right tabular-nums">{item.after}</span>
                   </div>
                 </div>
                 <div className="mt-2 flex justify-end">
-                  <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-bold text-emerald-700">
-                    <CheckCircle2 className="h-3 w-3" />+{item.after - item.before} points
+                  <span className="inline-flex items-center gap-1 rounded-md bg-emerald-50/80 px-2 py-0.5 text-[9px] font-bold text-emerald-700">
+                    +{item.after - item.before} pts
                   </span>
                 </div>
               </div>
             ))}
           </div>
         </div>
-        <TrendCard title="Évolution des audits — 7 derniers jours" data={mockAuditTrend7d} color="#0ea5e9" />
+        <div className="lg:col-span-2">
+          <TrendCard title="Évolution — 7 jours" data={mockAuditTrend7d} color="#2d9cdb" />
+        </div>
       </div>
 
       {/* Alerts + Actions */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-5">
         <RecentAlertsList audits={mockAudits} basePath="/chef-rayon/audits" />
         <CorrectiveActionsPanel actions={mockActions} basePath="/chef-rayon/actions" />
       </div>
 
       {/* Recent audits */}
       <DashboardSection
-        title="Audits récents du périmètre"
+        title="Audits récents"
         description="Derniers audits réalisés sur vos magasins"
-        action={<Link href="/chef-rayon/audits" className="text-[12px] font-medium text-sky-600 hover:text-sky-500 transition-colors">Tout voir →</Link>}
+        action={<Link href="/chef-rayon/audits" className="text-[11px] font-medium text-primary hover:text-primary/70 transition-colors">Tout voir →</Link>}
       >
         <AuditTable audits={recentAudits} basePath="/chef-rayon/audits" />
       </DashboardSection>

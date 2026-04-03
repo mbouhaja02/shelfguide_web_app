@@ -43,7 +43,7 @@ export function ActionTable({ actions, basePath }: ActionTableProps) {
             const dept = getDepartment(action.departmentId);
             const isPastDue = new Date(action.dueDate) < new Date() && action.status !== 'corrected';
             return (
-              <TableRow key={action.id} className="group hover:bg-sky-50/40 transition-colors">
+              <TableRow key={action.id} className="group hover:bg-[#fafbfd] transition-colors duration-150">
                 <TableCell>
                   <div className="max-w-[250px]">
                     <p className="text-[13px] font-medium text-foreground truncate">{action.title}</p>
