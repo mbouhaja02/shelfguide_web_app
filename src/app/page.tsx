@@ -5,18 +5,16 @@ import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
 export default function HomePage() {
-  const { user, isAuthenticated } = useAuth();
+  const { user } = useAuth();
   const router = useRouter();
 
   useEffect(() => {
-    if (!isAuthenticated) {
-      router.replace('/login');
-    } else if (user?.role === 'brand_manager') {
+    if (user?.role === 'brand_manager') {
       router.replace('/brand-manager');
     } else {
       router.replace('/chef-rayon');
     }
-  }, [user, isAuthenticated, router]);
+  }, [user, router]);
 
   return null;
 }

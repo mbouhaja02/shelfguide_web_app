@@ -8,7 +8,7 @@ import { LogIn, Eye, EyeOff, ArrowRight } from 'lucide-react';
 export default function LoginPage() {
   const { login } = useAuth();
   const router = useRouter();
-  const [email, setEmail] = useState('fatima.benali@carrefour.ma');
+  const [email, setEmail] = useState('yassine.elamrani@marjane.ma');
   const [password, setPassword] = useState('demo123');
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -46,11 +46,11 @@ export default function LoginPage() {
       <div className="relative z-10 w-full max-w-[420px] animate-fade-in">
         {/* Logo */}
         <div className="mb-10 text-center">
-          <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-600 text-white font-bold text-xl shadow-xl shadow-indigo-500/20">
-            SG
+          <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl overflow-hidden shadow-xl shadow-indigo-500/20">
+            <img src="/logo.jpeg" alt="ShelfGuide" className="h-full w-full object-cover" />
           </div>
           <h1 className="text-[28px] font-bold tracking-tight text-foreground">ShelfGuide</h1>
-          <p className="text-sm text-muted-foreground mt-1.5">Plateforme de supervision retail intelligente</p>
+          <p className="text-sm text-muted-foreground mt-1.5">Plateforme de supervision merchandising pour le retail au Maroc</p>
         </div>
 
         {/* Card */}
@@ -125,24 +125,24 @@ export default function LoginPage() {
           <div className="space-y-2">
             <button
               type="button"
-              onClick={() => { setEmail('fatima.benali@carrefour.ma'); }}
+              onClick={() => { setEmail('yassine.elamrani@marjane.ma'); }}
               className="w-full flex items-center gap-3 rounded-lg px-3 py-2 text-left hover:bg-indigo-50/60 transition-colors group"
             >
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 text-blue-600 text-[11px] font-bold group-hover:bg-blue-100 transition-colors">CR</div>
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 text-blue-600 text-[11px] font-bold group-hover:bg-blue-100 transition-colors">YE</div>
               <div>
-                <p className="text-[13px] font-medium text-foreground">Chef de rayon</p>
-                <p className="text-[11px] text-muted-foreground">fatima.benali@carrefour.ma</p>
+                <p className="text-[13px] font-medium text-foreground">Yassine El Amrani · Chef de rayon</p>
+                <p className="text-[11px] text-muted-foreground">Marjane · Casablanca / Rabat / Meknès</p>
               </div>
             </button>
             <button
               type="button"
-              onClick={() => { setEmail('marc.dupont@danone.com'); }}
+              onClick={() => { setEmail('salma.bennani@noordelice.ma'); }}
               className="w-full flex items-center gap-3 rounded-lg px-3 py-2 text-left hover:bg-violet-50/60 transition-colors group"
             >
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-violet-50 text-violet-600 text-[11px] font-bold group-hover:bg-violet-100 transition-colors">BM</div>
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-violet-50 text-violet-600 text-[11px] font-bold group-hover:bg-violet-100 transition-colors">SB</div>
               <div>
-                <p className="text-[13px] font-medium text-foreground">Brand Manager</p>
-                <p className="text-[11px] text-muted-foreground">marc.dupont@danone.com</p>
+                <p className="text-[13px] font-medium text-foreground">Salma Bennani · Brand Manager</p>
+                <p className="text-[11px] text-muted-foreground">Noor Délice · 12 magasins au Maroc</p>
               </div>
             </button>
           </div>

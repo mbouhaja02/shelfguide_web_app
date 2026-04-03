@@ -1,7 +1,7 @@
 'use client';
 
 import { useAuth } from '@/hooks/use-auth';
-import { Bell, Search, Menu, Settings, LogOut, User } from 'lucide-react';
+import { Bell, Search, Menu, Settings, User } from 'lucide-react';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import {
   DropdownMenu,
@@ -20,7 +20,7 @@ interface AppHeaderProps {
 }
 
 export function AppHeader({ onMenuToggle }: AppHeaderProps) {
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
   const unreadCount = mockNotifications.filter(n => n.userId === user?.id && !n.read).length;
   const initials = user?.fullName?.split(' ').map(n => n[0]).join('').toUpperCase() || '?';
   const roleLabel = user?.role === 'chef_rayon' ? 'Chef de rayon' : 'Brand Manager';
@@ -35,7 +35,7 @@ export function AppHeader({ onMenuToggle }: AppHeaderProps) {
         <div className="relative w-72">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground/60" />
           <input
-            placeholder="Rechercher..."
+            placeholder="Rechercher un magasin, audit, action..."
             className="w-full h-8 rounded-lg bg-black/[0.04] pl-9 pr-3 text-sm text-foreground placeholder:text-muted-foreground/50 outline-none ring-0 focus:bg-black/[0.06] focus:ring-1 focus:ring-primary/20 transition-all"
           />
           <kbd className="absolute right-2.5 top-1/2 -translate-y-1/2 hidden sm:inline-flex h-5 items-center gap-1 rounded border bg-muted/70 px-1.5 text-[10px] font-medium text-muted-foreground/70">
@@ -86,11 +86,6 @@ export function AppHeader({ onMenuToggle }: AppHeaderProps) {
             <DropdownMenuItem render={<Link href={user?.role === 'chef_rayon' ? '/chef-rayon/settings' : '/brand-manager/settings'} />}>
               <Settings className="h-3.5 w-3.5 mr-2 text-muted-foreground" />
               Paramètres
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={logout} className="text-red-600">
-              <LogOut className="h-3.5 w-3.5 mr-2" />
-              Déconnexion
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
